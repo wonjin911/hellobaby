@@ -8,12 +8,7 @@ app.use(express.static(__dirname + '/js'))
 app.use(express.static(__dirname + '/node_modules'))
 
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/view/index.html'));
-  //__dirname : It will resolve to your project folder.
-});
-
-app.get('/wonjin',function(req,res){
-  res.sendFile(path.join(__dirname+'/view/wonjin.html'));
+  res.sendFile(path.join(__dirname+'/view/main.html'));
 });
 
 app.get('/wave',function(req,res){

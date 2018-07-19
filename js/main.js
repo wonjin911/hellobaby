@@ -26,11 +26,28 @@ var baby = new Path.Circle({
 });
 //baby.fullySelected = true;
 
-var bottom1 = view.center + new Point(50, 100);
-var bottom2 = view.center + new Point(20, 120);
-//baby.insert(0, bottom1);
-baby.insert(0, bottom2);
+//var bottom2 = view.center + new Point(20, 120);
+//baby.insert(0, bottom2);
 baby.smooth();
+
+console.log(baby.position);
+var rectangle = new Rectangle(baby.position, baby.position + new Point(150, -75));
+var cornerSize = new Size(20, 20);
+var dialog = new Path.RoundRectangle(rectangle, cornerSize);
+dialog.fillColor = 'black';
+
+var text = new PointText(dialog.position);
+text.content = '엄마 안녕!';
+text.fillColor = 'white';
+
+baby.onMouseDown = function(event) {
+	this.fillColor = 'white';
+	this.strokeColor = 'black';
+}
+baby.onMouseUp = function(event) {
+	this.fillColor = 'black';
+	this.strokeColor = 'white';
+}
 
 // The onFrame function is called up to 60 times a second:
 function onFrame(event) {
@@ -42,21 +59,23 @@ function onFrame(event) {
 		// Move the item 1/20th of its width to the right. This way
 		// larger circles move faster than smaller circles:
 		item.position.x += item.bounds.width / 50;
+		item.position.y += item.bounds.width / 100;
 
 		// If the item has left the view on the right, move it back
 		// to the left:
 		if (item.bounds.left > view.size.width) {
 			item.position.x = -item.bounds.width;
 		}
+		if (item.bounds.up > view.size.height) {
+			item.position.y = -item.bounds.height;
+		}
 	}
 }
 
 function onMouseDown(event) {
-	baby.fillColor = 'white';
-	baby.strokeColor = 'black';
+	return
 }
 
 function onMouseUp(event) {
-	baby.fillColor = 'black';
-	baby.strokeColor = 'white';
+	return
 }
