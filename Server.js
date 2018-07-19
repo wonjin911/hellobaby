@@ -2,6 +2,7 @@ var express = require("express");
 var app     = express();
 var path    = require("path");
 
+var port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/js'))
 app.use(express.static(__dirname + '/node_modules'))
@@ -28,6 +29,6 @@ app.get('/tadpoles',function(req,res){
 });
 
 
-app.listen(8000);
+app.listen(port);
 
-console.log("Running at Port 8000");
+console.log("Running at Port : " + port);
