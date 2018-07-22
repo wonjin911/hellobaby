@@ -37,7 +37,6 @@ dialog.fillColor = 'white';
 dialog.strokeColor = 'black';
 
 var text_list = ['엄마 안녕!', '졸려요', '사랑해요', '엄마 힘내세요!', '고마워요 엄마'];
-console.log(dialog.bounds);
 var text = new PointText(dialog.bounds.leftCenter + new Point(30, 0));
 var rnum = Math.floor(Math.random() * (text_list.length));
 text.content = text_list[rnum];
